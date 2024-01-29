@@ -42,4 +42,28 @@ void libera_array(int **p){
     *p = NULL;
 }
 
+bool set_array_pos(int *p, int n, int pos, int valor){
+
+    if (pos < 0 || pos >= n || p==NULL){
+        return false;
+    }
+
+
+    p[pos] = valor;
+
+    return true;
+}
+
+bool set_array_pos(int *p, int n, int pos, int *valor){
+
+    if (pos < 0 || pos >= n || p==NULL || valor==NULL){
+        return false;
+    }
+
+
+    *valor = p[pos];
+
+    return true;
+}
+
 #endif

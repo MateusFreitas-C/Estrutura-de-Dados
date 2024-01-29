@@ -11,4 +11,8 @@ int* cria_array(int n);
 
 void libera_array(int **p);
 
+bool set_array_pos(int *p, int n, int pos, int valor);
+
+bool set_array_pos(int *p, int n, int pos, int *valor);
+
 #endif
