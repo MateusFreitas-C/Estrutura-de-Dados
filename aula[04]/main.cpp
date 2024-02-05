@@ -13,8 +13,8 @@ int main() {
 
     std::cout << "Distancia: " << distancia(p1, p2) << std::endl;
 
-    libera_ponto(p1);
-    libera_ponto(p2);
+    libera_ponto(&p1);
+    libera_ponto(&p2);
 
     return 0;
 }

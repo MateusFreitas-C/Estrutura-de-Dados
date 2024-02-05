@@ -27,11 +27,14 @@ Ponto* cria_ponto(int x, int y){
     }
 }
 
-void libera_ponto(Ponto *p){
-    free(p);
+void libera_ponto(Ponto** p){
+    if(*p){
+        free(*p);
+        *p = NULL;
+    }
 }
 
-bool set_ponto_pos(Ponto *p, int x, int y){
+bool set_ponto_pos(Ponto* p, int x, int y){
     if(!x || !y){
         std::cout<<"Erro" << std::endl;
         return false;
@@ -43,7 +46,7 @@ bool set_ponto_pos(Ponto *p, int x, int y){
     return true;
 }
 
-bool get_ponto_pos(Ponto *p, int x, int y){
+bool get_ponto_pos(Ponto* p, int x, int y){
     if(!x || !y){
         std::cout<<"Erro" << std::endl;
         return false;
@@ -65,7 +68,7 @@ void print(Ponto* p){
     std::cout << std::endl;
 }
 
-float distancia(Ponto *p1, Ponto *p2){
+float distancia(Ponto* p1, Ponto* p2){
     if(!p1 || !p2){
         return -1;
     }
