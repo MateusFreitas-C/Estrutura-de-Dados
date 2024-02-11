@@ -63,7 +63,7 @@ bool atribui_matriz(Matriz* m, int i, int j, float valor){
     return true;
 }
 
-void print_matriz(Matriz* m){
+void imprime_matriz(Matriz* m){
     for (int i=0; i < m->linhas; i++){
         for (int j=0; j < m->colunas; j++){
             std::cout << m->valor[i*m->colunas+j] << " ";
