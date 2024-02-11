@@ -10,4 +10,6 @@ int main(){
     if(m == NULL){
         std::cout << "Matriz liberada com sucesso!" << std::endl;
     }
+
+    return 0;
 }
