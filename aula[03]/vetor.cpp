@@ -22,7 +22,6 @@ Vetor* cria_array(int n){
 
         return v;
     }
-    std::cout << "Erro ao criar o vetor" << std::endl;
     free(v);
     return NULL;
 }
@@ -37,7 +36,6 @@ void libera_array(Vetor **v){
 
 bool set_array_pos(Vetor *v, int pos, float valor){
     if(!v || pos < 0){
-        std::cout<<"Erro" << std::endl;
         return false;
     }
 
@@ -100,7 +98,6 @@ bool realloc_array(Vetor *v, int n){
 
 bool preenche_array(Vetor *v){
     if(!v){
-        std::cout << "Erro ao preencher o vetor" << std::endl;
         return false;
     }
 

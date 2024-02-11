@@ -36,7 +36,6 @@ void libera_ponto(Ponto** p){
 
 bool set_ponto_pos(Ponto* p, int x, int y){
     if(!p){
-        std::cout<<"Erro" << std::endl;
         return false;
     }
 
@@ -48,7 +47,6 @@ bool set_ponto_pos(Ponto* p, int x, int y){
 
 bool get_ponto_pos(Ponto* p, int x, int y){
     if(!x || !y){
-        std::cout<<"Erro" << std::endl;
         return false;
     }
 
