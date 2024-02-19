@@ -6,15 +6,18 @@
 #include <time.h>
 #include <iostream>
 
-struct matriz
-{
+struct matriz{
     int linhas;
     int colunas;
     float **valor;
 };
 
-Matriz* cria_matriz(int linhas, int colunas)
-{
+Matriz* cria_matriz(int linhas, int colunas){
+
+    if(linhas <= 0 || colunas <= 0){
+        return NULL;
+    }
+
     Matriz* m = (Matriz*)malloc(sizeof(matriz));
     
     if(m){
@@ -22,8 +25,22 @@ Matriz* cria_matriz(int linhas, int colunas)
         m->colunas = colunas;
         m->valor = (float**)malloc(linhas*sizeof(float*));
         
+        if(!m->valor){
+            free(m);
+            return NULL;
+        }
+
         for (int i = 0; i < linhas; i++){
             m->valor[i] = (float*)malloc(colunas*sizeof(float));
+
+            if(m->valor[i] == NULL){
+                for (int j = 0; j < i; j++){
+                    free(m->valor[j]);
+                }
+                free(m->valor);
+                free(m);
+                return NULL;
+            }
         }
         
         return m;
@@ -32,8 +49,11 @@ Matriz* cria_matriz(int linhas, int colunas)
     }
 }
 
-void inicializa_matriz(Matriz* m)
-{
+void inicializa_matriz(Matriz* m){
+    if(!m){
+        return;
+    }
+
     srand(time(NULL));
     
     for (int i = 0; i < m->linhas; i++){
@@ -43,8 +63,7 @@ void inicializa_matriz(Matriz* m)
     }
 }
 
-void libera_matriz(Matriz** m)
-{
+void libera_matriz(Matriz** m){
     if(*m){
         for (int i = 0; i < (*m)->linhas; i++){
             free((*m)->valor[i]);
@@ -55,8 +74,12 @@ void libera_matriz(Matriz** m)
     }
 }
 
-bool acessa_matriz(Matriz* m, int i, int j, float* valor)
-{
+bool acessa_matriz(Matriz* m, int i, int j, float* valor){
+
+    if(!m || !valor){
+        return false;
+    }
+
     if(i < 0 || i >= m->linhas || j < 0 || j >= m->colunas){
         return false;
     }
@@ -65,8 +88,7 @@ bool acessa_matriz(Matriz* m, int i, int j, float* valor)
     return true;
 }
 
-bool atribui_matriz(Matriz* m, int i, int j, float valor)
-{
+bool atribui_matriz(Matriz* m, int i, int j, float valor){
     if(i < 0 || i >= m->linhas || j < 0 || j >= m->colunas){
         return false;
     }
@@ -75,8 +97,7 @@ bool atribui_matriz(Matriz* m, int i, int j, float valor)
     return true;
 }
 
-void imprime_matriz(Matriz* m)
-{
+void imprime_matriz(Matriz* m){
     for (int i = 0; i < m->linhas; i++){
         for (int j = 0; j < m->colunas; j++){
             std::cout << m->valor[i][j] << " ";

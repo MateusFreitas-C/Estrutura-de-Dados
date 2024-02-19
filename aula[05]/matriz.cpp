@@ -14,12 +14,22 @@ struct matriz
 };
 
 Matriz* cria_matriz(int linhas, int colunas){
+    
+    if(linhas <= 0 || colunas <= 0){
+        return NULL;
+    }
+    
     Matriz *m = (Matriz*) malloc(sizeof(matriz));
 
     if(m){
         m->linhas = linhas;
         m->colunas = colunas;
         m->valor = (float*) malloc(linhas*colunas*sizeof(float));
+
+        if(!m->valor){
+            free(m);
+            return NULL;
+        }
 
         return m;
     }else{
