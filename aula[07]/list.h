@@ -23,4 +23,6 @@ void print_list(List* l);
 
 void free_list(List** l);
 
+bool list_size(List* l, int* size);
+
 #endif
