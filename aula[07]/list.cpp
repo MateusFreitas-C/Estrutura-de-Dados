@@ -130,3 +130,21 @@ void print_list(List* l) {
     }
     std::cout << std::endl;
 }
+
+bool list_size(List* l, int* size){
+    if(!l || !size){
+        return false;
+    }
+
+    int count = 0;
+
+    Node* aux = l->head;
+
+    while(aux){
+        count++;
+        aux = aux->next;
+    }
+    *size = count;
+
+    return true;
+}
