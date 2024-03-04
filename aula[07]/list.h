@@ -25,4 +25,6 @@ void free_list(List** l);
 
 bool list_size(List* l, int* size);
 
+bool insert_ordered(List* l, int value);
+
 #endif

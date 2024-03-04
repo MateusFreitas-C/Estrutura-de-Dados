@@ -148,3 +148,30 @@ bool list_size(List* l, int* size){
 
     return true;
 }
+
+bool insert_ordered(List* l, int value){
+    if(!l){
+        return false;
+    }
+
+    Node* n = create_node(value);
+
+    if(!n){
+        return false;
+    }
+
+    if(!l->head || l->head->value > value){
+        n->next = l->head;
+        l->head = n;
+        return true;
+    }
+
+    Node* aux = l->head;
+    while(aux->next && aux->next->value < value){
+        aux = aux->next;
+    }
+
+    n->next = aux->next;
+    aux->next = n;
+    return true;
+}
