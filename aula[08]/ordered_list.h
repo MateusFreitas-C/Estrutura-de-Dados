@@ -13,4 +13,6 @@ bool remove(List* l, int value);
 
 bool insert(List* l, int value);
 
+void free_list(List** l);
+
 #endif

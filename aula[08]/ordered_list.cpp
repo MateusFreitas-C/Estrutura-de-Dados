@@ -32,6 +32,22 @@ List* create_list() {
     return l;
 }
 
+void free_list(List** l) {
+    if(!l || !(*l)){
+        return;
+    }
+
+    Node* aux = (*l)->head;
+    while(aux){
+        Node* next = aux->next;
+        free(aux);
+        aux = next;
+    }
+
+    free(*l);
+    *l = NULL;
+}
+
 void print_list(List* l) {
     if(!l || !l->head){
         return;
